@@ -11,13 +11,11 @@ class Stack{
         }
 
         void push(std::string value){
-            top++;
-            stackArray[top] = value;
+            stackArray[++top] = value;
         }
 
         std::string pop(){
-            std::string returningValue = stackArray[top];
-            top--;
+            std::string returningValue = stackArray[top--];
             return returningValue;
         }
 
@@ -59,5 +57,6 @@ int main(){
     std::cout << stackObj.peek() << std::endl;
     std::cout << stackObj.count() << std::endl;
 
+    
     return 0;
 }
