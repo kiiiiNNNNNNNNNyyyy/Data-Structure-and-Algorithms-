@@ -11,7 +11,11 @@ class Stack{
         }
 
         void push(std::string value){
-            stackArray[++top] = value;
+            if(!isFull()){
+                stackArray[++top] = value;
+            }else{
+                std::cout << "Stack is full!";
+            }
         }
 
         std::string pop(){
@@ -34,8 +38,8 @@ class Stack{
             top = -1;
         }
 
-        bool isEmpty(){ 
-            if(top == -1){
+        bool isFull(){ 
+            if(top == 5){
                 return true;
             }else{
                 return false;
@@ -48,15 +52,23 @@ int main(){
     Stack stackObj;
     stackObj.push("Arjun");
     stackObj.push("Tom");
+
     std::cout << stackObj.peek() << std::endl;
+
     stackObj.push("David");
     stackObj.push("Jim");
+    
     std::cout << stackObj.peek() << std::endl;
     std::cout << stackObj.count() << std::endl;
+    
     stackObj.pop();
+    
     std::cout << stackObj.peek() << std::endl;
     std::cout << stackObj.count() << std::endl;
 
+    stackObj.push("Jim");
+    stackObj.push("Eric");
+    stackObj.push("Terrance");   
     
     return 0;
 }
