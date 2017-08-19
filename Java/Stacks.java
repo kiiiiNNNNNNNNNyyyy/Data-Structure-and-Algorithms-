@@ -7,7 +7,11 @@ class Stack{
     }
 
     public void push(String value){
-        stackArry[++top] = value;
+        if(!isFull()){
+            stackArry[++top] = value;
+        }else{
+            System.out.println("Stack is Full!!");
+        }
     }
 
     public String pop(){
@@ -29,8 +33,8 @@ class Stack{
         }
     }
 
-    boolean isEmpty(){
-        if(top == -1){
+    boolean isFull(){
+        if(top == 4){
             return true;
         }else{
             return false;
@@ -57,5 +61,9 @@ public class Stacks{
 
         System.out.println(stackObj.peek());
         System.out.println(stackObj.count());
+
+        stackObj.push("Jim");
+        stackObj.push("Eric");
+        stackObj.push("Terrance");
     }
 }
