@@ -1,5 +1,5 @@
 class Stack{
-    private static String[] stackArry;
+    private static String[] stackArry = new String[100];
     private int top;
 
     Stack(){
@@ -20,7 +20,7 @@ class Stack{
     }
 
     public int count(){
-        return top;
+        return top+1;
     }
 
     public void clear(){
@@ -43,5 +43,19 @@ public class Stacks{
         Stack stackObj = new Stack();
         stackObj.push("Arjun");
         stackObj.push("Tom");
+
+        System.out.println(stackObj.peek());
+        System.out.println(stackObj.count());
+
+        stackObj.push("David");
+        stackObj.push("Jim");
+
+        System.out.println(stackObj.peek());
+        System.out.println(stackObj.count());
+
+        stackObj.pop();
+
+        System.out.println(stackObj.peek());
+        System.out.println(stackObj.count());
     }
 }
