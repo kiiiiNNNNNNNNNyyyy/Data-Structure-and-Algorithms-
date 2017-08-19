@@ -3,9 +3,22 @@ class Stacks{
         this.array = [100];
         this.top = -1;
     }
+
+    isFull(){
+        if(this.top === 4){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
     push(value){
-        this.array[++this.top] = value;
+        if(!this.isFull()){
+    this.array[++this.top] = value;
+        }else{
+            console.log("Stack is Full!!");
+        }
+        
     }
 
     pop(){
@@ -18,15 +31,7 @@ class Stacks{
     }
 
     count(){
-        return this.top;
-    }
-
-    isEmpty(){
-        if(top <= -1){
-            return true;
-        }else{
-            return false;
-        }
+        return this.top + 1;
     }
 }
 
@@ -47,3 +52,9 @@ stack.pop();
 
 console.log(stack.peek());
 console.log(stack.count());
+
+stack.push("Jim");
+stack.push("Eric");
+stack.push("Terrance");
+
+
