@@ -21,7 +21,7 @@ class Queue{
 
     public String dequeue(){
         if(!isEmpty()){
-            String returnValue = queueArray[back];
+            String returnValue = queueArray[front];
              
             for(int i=front; i<=back; ++i){
                     queueArray[i] = queueArray[i+1];

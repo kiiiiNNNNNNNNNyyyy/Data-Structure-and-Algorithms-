@@ -1,5 +1,6 @@
 class Stacks{
-    constructor(aray){
+    
+    constructor(aay){
         this.array = [100];
         this.top = -1;
     }
