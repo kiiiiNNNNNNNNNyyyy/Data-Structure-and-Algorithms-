@@ -24,31 +24,6 @@ class SinglyLinkedList{
         public Object getNext(){
             return next;
         }
-
-        // insertAfter and insertBefore
-        public void insertAfter(Object item){
-            next = new Element(item, next);
-            
-            if(tail == this){
-                tail = next;
-            }
-        }
-
-        public void insertBefore(Object item){
-            Element temp = new Element(item, this);
-            
-            if(this == head){
-                head = temp;
-            }else{
-                Element prevPtr = head;
-                
-                while(prevPtr != null && prevPtr.next != this){
-                    prevPtr = prevPtr.next;
-                }
-                
-                prevPtr.next = temp;
-            }
-        }
     }
 
     // Since the heads and Ttails are initially null, the list is empty by defualt and therefore the constructor does nothing.
@@ -135,6 +110,26 @@ class SinglyLinkedList{
         }
     }
 
+    public void insertBefore(Object item, Object toAdd){
+
+        Element temp = new Element(toAdd, null);
+        Element ptr = head;
+        Element prevPtr = null;
+
+        while(ptr != tail){
+            if(ptr.data != item){
+                prevPtr = ptr;
+                ptr = ptr.next;
+            }else{
+                Element currentNext = prevPtr.next;
+                //temp.next = prevPtr.next;
+                prevPtr.next = temp;
+                ptr = temp;
+                ptr.next = currentNext; 
+                break;
+            }
+        }
+    }
     // extract - the purpose of this method is to delete the specific element of the list
 
     public void extract(Object item){
@@ -165,6 +160,17 @@ class SinglyLinkedList{
         }
     }
 
+    public void printList(){
+        Element ptr = head;
+        Element prevPtr = null;
+        do{
+            System.out.print(ptr.data + " | ");
+            prevPtr = ptr;
+            ptr = ptr.next;
+        }
+        while(ptr != tail);
+    }
+
     public static void main(String args[]){
         SinglyLinkedList linkedList = new SinglyLinkedList();
         String x = "Hello";
@@ -178,9 +184,12 @@ class SinglyLinkedList{
         System.out.println(linkedList.getTail());
         linkedList.extract("delete");
         linkedList.appends("delete");
-        System.out.println(linkedList.getLast());
-        linkedList.extract("delete");
-        
+        linkedList.printList();
+        linkedList.insertBefore("My" , "this");
+        System.out.println();
+        //System.out.println(linkedList.getLast());
+        //linkedList.extract("delete");
+        linkedList.printList();
     }
 
     // getLast method - The getLast method returns the last list element.
