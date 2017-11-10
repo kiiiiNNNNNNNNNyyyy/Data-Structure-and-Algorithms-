@@ -185,10 +185,12 @@ class SinglyLinkedList{
         linkedList.extract("delete");
         linkedList.appends("delete");
         linkedList.printList();
-        linkedList.insertBefore("My" , "this");
+        linkedList.insertBefore(123 , "this");
         System.out.println();
-        //System.out.println(linkedList.getLast());
-        //linkedList.extract("delete");
+        
+        linkedList.printList();
+        System.out.println(linkedList.getLast());
+        linkedList.extract("delete");
         linkedList.printList();
     }
 
