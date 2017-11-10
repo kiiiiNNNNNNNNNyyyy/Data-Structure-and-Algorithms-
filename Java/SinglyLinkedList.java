@@ -148,7 +148,9 @@ class SinglyLinkedList{
         }
 
         if(ptr == null){
-            throw new IllegalArgumentException("Item not found!");
+            //throw new IllegalArgumentException("Item not found!");
+            System.out.println("Item not found!");
+            return;
         }
 
         if(ptr == head){
@@ -159,10 +161,25 @@ class SinglyLinkedList{
 
         if(ptr == tail){
             tail = prevPtr;
+            System.out.println("Item deleted!");
         }
     }
 
     public static void main(String args[]){
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        String x = "Hello";
+        linkedList.appends(x);
+        linkedList.appends("My");
+        linkedList.appends("roll no is");
+        linkedList.appends(123);
+        System.out.println(linkedList.getFirst());
+        System.out.println(linkedList.getLast());
+        System.out.println(linkedList.getHead());
+        System.out.println(linkedList.getTail());
+        linkedList.extract("delete");
+        linkedList.appends("delete");
+        System.out.println(linkedList.getLast());
+        linkedList.extract("delete");
         
     }
 
