@@ -125,11 +125,39 @@ public class BinaryTree{
         }
 
         else{
-            Node replacement getReplacementNode(focusNode);
+            Node replacement = getReplacementNode(focusNode);
             if(focusNode == root){
                 root = replacement;
+            }else if(isItALeftChild){
+                parent.leftChild = replacement;
+            }else{
+                parent.RightChild = replacement;
             }
+
+            replacement.leftChild = focusNode.leftChild;
         }
+
+        return true;
+    }
+
+    public Node getReplacementNode(Node replacedNode){
+        Node replacementParent = replacedNode;
+        Node replacement = replacedNode;
+
+        Node focusNode = replacedNode.RightChild;
+
+        while(focusNode != null){
+            replacementParent = replacement;
+            replacement = focusNode;
+            focusNode = focusNode.leftChild;
+        }
+
+        if(replacement != replacedNode.RightChild){
+            replacementParent.leftChild = replacement.RightChild;
+            replacementParent.RightChild = replacedNode.RightChild;
+        }
+
+        return replacement;
     }
     
     public static void main(String args[]){
@@ -140,6 +168,9 @@ public class BinaryTree{
         tree.addNode(30, "Seceratory");
         tree.addNode(75, "Sales Manager");
         tree.addNode(85, "SalesMan");
+
+        System.out.println("REMOVE KEY 25");
+        tree.remove(25);
 
         tree.postOrderTraversalTree(tree.root);
         System.out.println(tree.findNode(30));
