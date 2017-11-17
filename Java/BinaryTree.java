@@ -1,3 +1,4 @@
+import javax.net.ssl.ExtendedSSLSession;
 import javax.swing.text.html.FormView;
 
 public class BinaryTree{
@@ -70,6 +71,65 @@ public class BinaryTree{
             }
         }
         return focusNode;
+    }
+
+    public boolean remove(int key){
+        Node focusNode = root;
+        Node parent = root;
+
+        boolean isItALeftChild = true;
+
+        while(focusNode.key != key){
+            parent = focusNode;
+            if(key < focusNode.key){
+                isItALeftChild = true;
+                focusNode = focusNode.leftChild;
+            }else{
+                isItALeftChild = false;
+                focusNode = focusNode.RightChild;
+            }
+
+            if(focusNode == null){
+                return false;
+            }
+        }
+
+        if(focusNode.leftChild == null && focusNode.RightChild == null){
+            if(focusNode == root){
+                root = null;
+            }else if(isItALeftChild){
+                parent.leftChild = null;
+            }else{
+                parent.RightChild = null;
+            }
+        }
+
+        else if(focusNode.RightChild == null){
+            if(focusNode == root){
+                root = focusNode.leftChild;
+            }else if(isItALeftChild){
+                parent.leftChild = focusNode.leftChild;
+            }else{
+                parent.RightChild = focusNode.leftChild;
+            }
+        }
+
+        else if(focusNode.leftChild == null){
+            if(focusNode == root){
+                root = focusNode.RightChild;
+            }else if(isItALeftChild){
+                parent.leftChild = focusNode.RightChild;
+            }else{
+                parent.RightChild = focusNode.leftChild;
+            }
+        }
+
+        else{
+            Node replacement getReplacementNode(focusNode);
+            if(focusNode == root){
+                root = replacement;
+            }
+        }
     }
     
     public static void main(String args[]){
