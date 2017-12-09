@@ -171,6 +171,11 @@ class SinglyLinkedList{
         while(ptr != tail);
     }
 
+    public int getCount(SinglyLinkedList list){
+        System.out.println(list.getFirst());
+        return 0;
+    }
+
     public static void main(String args[]){
         SinglyLinkedList linkedList = new SinglyLinkedList();
         String x = "Hello";
@@ -192,6 +197,7 @@ class SinglyLinkedList{
         System.out.println(linkedList.getLast());
         linkedList.extract("delete");
         linkedList.printList();
+        linkedList.getCount(linkedList);
     }
 
     // getLast method - The getLast method returns the last list element.
