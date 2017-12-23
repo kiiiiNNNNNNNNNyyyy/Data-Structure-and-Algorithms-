@@ -6,6 +6,14 @@ class Stack{
         top = -1;
     }
 
+    boolean isFull(){
+        if(top == 4){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     public void push(String value){
         if(!isFull()){
             stackArry[++top] = value;
@@ -30,14 +38,6 @@ class Stack{
     public void clear(){
         for(int i=0; i<=top-1; i++){
             stackArry[i] = "";
-        }
-    }
-
-    boolean isFull(){
-        if(top == 4){
-            return true;
-        }else{
-            return false;
         }
     }
 }
